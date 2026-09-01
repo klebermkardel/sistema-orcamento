@@ -1,0 +1,11 @@
+# Ignorar dependências do Node
+node_modules/
+dist/
+
+# Ignorar o banco de dados local do SQLite
+backend/estoque.db
+backend/estoque.db-journal
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
