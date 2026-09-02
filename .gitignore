@@ -1,6 +1,9 @@
 # Ignorar dependências do Node
-node_modules/
-dist/
+backend/node_modules/
+backend/dist/
+frontend/node_modules/
+frontend/dist/
+
 
 # Ignorar o banco de dados local do SQLite
 backend/estoque.db
