@@ -20,7 +20,53 @@ function App() {
 
   return (
     <div className="container">
+      <header>
+        <h1>🖥️ Sistema de Orçamentos Fast-Track</h1>
+        <p>Busque peças de informática em tempo real enquanto atende o cliente.</p>
+      </header>
 
+      {/* Campo de Pesquisa Inteligente */}
+      <div className="search-box">
+        <input
+          type="text"
+          placeholder="Digite o nome da peça (Ex: RTX 4060, Ryzen)..."
+          value={termo}
+          onChange={(e) => setTermo(e.target.value)}
+          autoFocus
+        />
+      </div>
+
+      {/* Tabela de Resultados do Estoque */}
+      <main className="results-container">
+        {produtos.length > 0 ? (
+          <table className="products-table">
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Categoria</th>
+                <th>Preço Unificado</th>
+                <th>Loja / Filial</th>
+                <th>Qtd Disponível</th>
+              </tr>
+            </thead>
+            <tbody>
+              {produtos.map((item, index) => (
+                <tr key={index}>
+                  <td><strong>{item.nome}</strong></td>
+                  <td><span className="badge">{item.categoria}</span></td>
+                  <td>R$ {item.preco_custo.toFixed(2)}</td>
+                  <td>{item.nome_loja}</td>
+                  <td className={item.quantidade > 0 ? "em-estoque" : "sem-estoque"}>
+                    {item.quantidade} un
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          termo && <p className="no-results">Nenhum produto encontrado no estoque para "{termo}".</p>
+        )}
+      </main>
     </div>
   );
 }
